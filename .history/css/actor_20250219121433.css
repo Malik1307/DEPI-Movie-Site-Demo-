@@ -1,0 +1,286 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: TiemposHeadlineWeb-Bold;
+  src: url(https://s.ltrbxd.com/fonts/TiemposHeadlineWeb-Bold.eot);
+}
+
+@font-face {
+  font-family: Graphik-Light;
+  src: url(https://s.ltrbxd.com/fonts/Graphik-Light-Web.eot);
+}
+
+@font-face {
+  font-family: Graphik-Regular;
+  src: url(https://s.ltrbxd.com/fonts/Graphik-Regular-Web.eot);
+}
+
+@font-face {
+  font-family: Graphik-Semibold;
+  src: url(https://s.ltrbxd.com/fonts/Graphik-SemiboldItalic-Web.eot);
+}
+
+body {
+  font-family: Graphik-Regular, sans-serif;
+  background: linear-gradient(#20272e, #14181c);
+  background-attachment: fixed;
+  color: #fff;
+}
+
+.centering {
+  width: 1000px;
+  margin: auto;
+}
+
+header {
+  background-color: #14181c;
+  position: relative;
+  z-index: 1;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: #fff;
+  padding: 20px 0;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+li {
+  list-style: none;
+}
+
+.logo {
+  font-family: TiemposHeadlineWeb-Bold, sans-serif;
+  font-size: 29px;
+  color: #fff;
+  font-weight: 800;
+}
+
+.logo img {
+  width: 55px;
+  height: 20px;
+}
+
+.navbarItems {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.navbar-nav .nav-item {
+  margin: 0 10px;
+}
+
+.nav-link {
+  font-family: Graphik-Semibold, sans-serif;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 800;
+  color: #667788;
+  transition: 0.2s;
+}
+
+.nav-link:hover {
+  color: #fff;
+}
+
+.dropdown {
+  display: flex;
+  align-items: center;
+}
+
+.dropdown img {
+  width: 25px;
+  height: 25px;
+  margin-right: 5px;
+  border-radius: 50%;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 26px;
+  background-color: #8899aa;
+  padding: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.dropdown-item {
+  padding: 10px 0;
+}
+
+.btnLog {
+  background-color: #15ad2d;
+  color: #fff;
+  padding: 7px 15px;
+  border-radius: 5px;
+  border: none;
+  font-size: 13px;
+  font-weight: 700;
+  margin-left: 15px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btnLog:hover {
+  background-color: #009d1a;
+}
+
+hr {
+  margin: 5px 0px 15px 0px;
+  border: 1px solid rgb(102, 119, 136, 0.3);
+}
+
+.actorProfile {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding-bottom: 40px;
+}
+
+.actorFilms {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.actorFilms p {
+  font-family: Graphik-Light, sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  text-transform: uppercase;
+  color: #667788;
+}
+
+.actorFilms h2 {
+  font-family: Graphik-Semibold, sans-serif;
+  font-size: 25px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+.actorFilms img {
+  width: 125 px;
+  height: 190px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.actorFilms img:hover {
+  transform: scale(1.03);
+  transition: 0.3s;
+}
+.films {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.aboutActor {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+.aboutActor img {
+  width: 230px;
+  height: 340px;
+  border-radius: 5px;
+  border: 1px solid rgb(255, 255, 255, 0.3);
+  cursor: pointer;
+}
+
+.aboutActor img:hover {
+  border: 1px solid rgb(255, 255, 255 , 0.6);
+  transition: 0.3s;
+}
+
+.aboutActor h3 {
+  font-family: Graphik-Semibold, sans-serif;
+  font-size: 15px;
+  margin-top: 20px;
+  color: #667788;
+}
+
+.aboutActor p {
+  font-family: Graphik-Light, sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  margin-top: 10px;
+  color: #667788;
+}
+
+footer {
+  background-color: #2c3440;
+  color: #91a1b2;
+  height: 170px;
+}
+
+.hallFooter {
+  display: flex;
+  justify-content: space-between;
+  padding: 35px 0;
+}
+
+.footerLinks {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
+.Links {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.footerLink {
+  font-family: Graphik-Semibold, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.footerLink:hover {
+  color: #fff;
+}
+
+.copyRights {
+  font-family: Graphik-Light, sans-serif;
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+.socialLinks {
+  display: flex;
+  justify-content: space-between;
+  width: 20%;
+}
+
+.socialLink {
+  cursor: pointer;
+  opacity: 0.6;
+  transition: 0.3s;
+}
+
+.socialLink:hover {
+  color: #fff;
+}

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/movie-details.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <style>
+  
+  
+  </style>
+</head>
+<body class="container">
+  <!-- Movie Info Section -->
+  <div class="movie-container">
+    <div class="movie-backdrop"></div>
+    <div class="movie-poster"></div>
+    
+    <div class="container-fluid px-4">
+      <div class="row movie-header">
+        <div class="col-lg-7">
+          <h1 class="movie-title">The Terminal</h1>
+          
+          <div>
+            <span class="badge-top">TOP 1</span>
+            <span class="badge text-bg-secondary">New Movies</span>
+            <span class="badge-vip">VIP</span>
+          </div>
+          
+          <div class="movie-rating">
+            <span class="rating-star"><i class="fas fa-star"></i></span>
+            <span class="fw-bold">8.8</span>
+          </div>
+          
+          <div class="movie-info">
+            <span>13+</span>
+            <span>2025</span>
+            <span>1 h 28 m</span>
+          </div>
+          
+          <div class="movie-tags">
+            <span class="movie-tag">Comedy</span>
+            <span class="movie-tag">Drama</span>
+          
+          </div>
+          
+          <div class="vip-banner">
+            <span class="vip-icon"><i class="fas fa-crown"></i></span>
+            <span>Subscribe to VIP, Enjoy watching our amazing content!</span>
+          </div>
+          
+          <div class="movie-meta">
+            <span class="meta-label">Director:</span>
+            <span>Unknown</span>
+          </div>
+          
+          <div class="movie-meta">
+            <span class="meta-label">Cast:</span>
+            <span>Unknown</span>
+          </div>
+          
+          <div class="movie-description">
+            <span class="meta-label">Description:</span>
+            <span id="description-text">In the fourth year of Jiayou in the Northern Song Dynasty, a shocking private salt case was exposed, uncovering a sinister plot involving Zhang Keiju, the Huainan Transport Commissioner, who colluded with the Liao people in treason. Kaifeng Prefecture's Zhan Zhao was ordered...
+            </span>
+            <button class="more-btn">More</button>
+          </div>
+          
+          <div class="action-buttons">
+            <button class="btn-play">
+              <span class="btn-icon"><i class="fas fa-play"></i></span>
+              Play
+            </button>
+            <button class="btn-secondary">
+              <span class="btn-icon"><i class="fas fa-share-alt"></i></span>
+              Share
+            </button>
+            <button class="btn-secondary">
+              <span class="btn-icon"><i class="fas fa-mobile-alt"></i></span>
+              APP
+            </button>
+            <button class="btn-secondary">
+              <span class="btn-icon"><i class="fas fa-clock"></i></span>
+              Watch Later
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Tabs Section (now clearly separated) -->
+  <div class="tabs-section">
+    <div class="container-fluid px-4">
+      <div class="tabs">
+        <div class="tab active" data-tab="cast">Cast</div>
+        <div class="tab" data-tab="recommended">Recommended</div>
+      </div>
+      
+      <div id="cast" class="tab-content active">
+        <div class="cast-grid">
+          <!-- Cast Card 1 -->
+          <div class="cast-card">
+            <img src="https://media.themoviedb.org/t/p/w276_and_h350_face/cg3LW0xX6RKr8dmescxq1bepcb5.jpg" alt="Actor 1" class="cast-img">
+            <div class="cast-info">
+              <h3 class="cast-name">Miles Teller</h3>
+              <p class="cast-character">Levi</p>
+            </div>
+          </div>
+        
+  
+      
+      <div id="recommended" class="tab-content">
+        <div class="row">
+          <div class="col-12">
+            <p>Recommended movies will appear here.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // More button functionality
+      const moreBtn = document.querySelector('.more-btn');
+      const descriptionText = document.getElementById('description-text');
+      const fullText = "Viktor Navorski is a man without a country; his plane took off just as a coup d'etat exploded in his homeland, leaving it in shambles, and now he's stranded at Kennedy Airport, where he's holding a passport that nobody recognizes. While quarantined in the transit lounge until authorities can figure out what to do with him, Viktor simply goes on living – and courts romance with a beautiful flight attendant.";
+      const shortText = 'In the fourth year of Jiayou in the Northern Song Dynasty, a shocking private salt case was exposed, uncovering a sinister plot involving Zhang Keiju, the Huainan Transport Commissioner, who colluded with the Liao people in treason. Kaifeng Prefecture\'s Zhan Zhao was ordered...';
+      
+      let isExpanded = false;
+      
+      moreBtn.addEventListener('click', function() {
+        if (isExpanded) {
+          descriptionText.textContent = shortText;
+          moreBtn.textContent = 'More';
+        } else {
+          descriptionText.textContent = fullText;
+          moreBtn.textContent = 'Less';
+        }
+        isExpanded = !isExpanded;
+      });
+      
+      // Tab functionality
+      const tabs = document.querySelectorAll('.tab');
+      const tabContents = document.querySelectorAll('.tab-content');
+      
+      tabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+          const tabId = this.getAttribute('data-tab');
+          
+          // Update active tab
+          tabs.forEach(t => t.classList.remove('active'));
+          this.classList.add('active');
+          
+          // Update active content
+          tabContents.forEach(content => content.classList.remove('active'));
+          document.getElementById(tabId).classList.add('active');
+        });
+      });
+    });
+  </script>
+  <script type="mod" src="../js/movie-details.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+.logo {
+  display: flex;
+  justify-content: center;
+}
+.logo .logo_icon {
+  margin-right: 10px;
+  width: 40px;
+  height: 40px;
+}
+.logo h1 {
+  margin: auto 0;
+}
+.carousel-item {
+  height: 600px;
+  back
+  width: 100%;
+  background: url("https://image.tmdb.org/t/p/w1280/ekstpH614fwDX8DUln1a2Opz0N8.jpg  ") no-repeat center center;
+  background-size: cover; /* Ensures it fills the container */
+  background-position: center;
+}
+

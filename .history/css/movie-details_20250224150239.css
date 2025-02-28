@@ -1,0 +1,26 @@
+body {
+  font-family: Arial, sans-serif;
+  
+}
+
+header {
+  background-color: #1c1c1c;
+}
+
+.rating {
+  font-size: 1.2rem;
+}
+
+.card {
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.list-group-item {
+  border: none;
+  background-color: #f8f9fa;
+}
+
+footer {
+  background-color: #1c1c1c;
+}

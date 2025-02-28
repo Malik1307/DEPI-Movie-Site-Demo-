@@ -1,0 +1,34 @@
+@media (max-width: 992px) {
+}
+/* xsmall */
+@media (min-width: 300px) {
+  .container {
+    width: 85%;
+  }
+}
+/* small */
+@media (min-width: 576px) {
+  .container {
+    width: 85%;
+  }
+}
+
+/* medium */
+@media (min-width: 768px) {
+  .container {
+    width: 85%;
+  }
+}
+
+/* large */
+@media (min-width: 992px) {
+  .container {
+    width: 85%;
+  }
+}
+/* XL */
+@media (min-width: 1200px) {
+  .container {
+    max-width:  85%;
+  }
+}

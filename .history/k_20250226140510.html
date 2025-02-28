@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Card Hover Effect</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+      
+</head>
+<body>
+    <div class="container py-3">
+        <div class="row movies_grid g-1">
+            <!-- Movies will be inserted here -->
+        </div>
+    </div>
+
+    <script>
+        // Constants
+        const BASE_URL = 'https://api.themoviedb.org/3';
+        const API_KEY = 'YOUR_API_KEY'; // Replace with your actual API key
+        const IMAGE_URL = 'https://image.tmdb.org/t/p/w500';
+        
+        // Modified MovieCard function with hover detail
+      
+
+        // Fetch trending movies (kept almost identical to your code)
+        async function fetchMovies(endPoint, query, pageNumber) {
+            try {
+                const response = await fetch(
+                    `${BASE_URL + endPoint}?api_key=${API_KEY + query}&language=en-US&page=${pageNumber}`
+                );
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error("Error fetching movies:", error);
+            }
+        }
+
+        async function fetchingHomePage() {
+            const moviesGrid = document.querySelector(".movies_grid");
+            moviesGrid.innerHTML = "";
+            const data = await fetchMovies("/trending/movie/week", "", 1);
+
+            data.results.forEach((movie, index) => {
+                const movieCard = document.createElement("div");
+                movieCard.classList.add(
+                    "col-md-3",
+                    "col-sm-6",
+                    "col-lg-2",
+                    "movie_container"
+                );
+
+                movieCard.innerHTML = MovieCard(movie, index);
+
+                moviesGrid.appendChild(movieCard);
+            });
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', fetchingHomePage);
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

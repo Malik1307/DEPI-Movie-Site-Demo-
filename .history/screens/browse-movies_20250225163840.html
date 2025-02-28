@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/YOUR-FONT-AWESOME-CODE.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="../css/responsive.css" />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/browsing-catergory.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a href="index.html">
+          <div class="logo">
+            <img
+              src="../assets/images/movie-logo.png"
+              class="logo_icon"
+              alt=""
+            />
+            <h1 class="navbar-brand">CineMirage</h1>
+          </div>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse me-auto ms-4" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item"><a class="nav-link" href="./browse-movies.html">Movies</a></li>
+            <li class="nav-item"><a class="nav-link" href="./browse-shows.html">TV Shows</a></li>
+            <li class="nav-item"><a class="nav-link" href="./browse-anime.html">Anime</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Filtering Section -->
+    <div class="container mt-4 mb-3">
+      <div class="card bg-dark text-white">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h5 class="mb-0">Filters</h5>
+          <button class="btn btn-sm btn-outline-light" id="resetFilters">Reset Filters</button>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <!-- Genre Filter -->
+            <div class="col-md-3 mb-3">
+              <label for="genreSelect" class="form-label">Genre</label>
+              <select class="form-select" id="genreSelect" multiple>
+                <option value="" disabled>Select genres</option>
+                <!-- Genres will be populated via JavaScript -->
+              </select>
+            </div>
+            
+            <!-- Sort By Filter -->
+            <div class="col-md-3 mb-3">
+              <label for="sortSelect" class="form-label">Sort By</label>
+              <select class="form-select" id="sortSelect">
+                <option value="popularity.desc">Popularity (Desc)</option>
+                <option value="popularity.asc">Popularity (Asc)</option>
+                <option value="vote_average.desc">Rating (Desc)</option>
+                <option value="vote_average.asc">Rating (Asc)</option>
+                <option value="release_date.desc">Release Date (Desc)</option>
+                <option value="release_date.asc">Release Date (Asc)</option>
+                <option value="revenue.desc">Revenue (Desc)</option>
+              </select>
+            </div>
+            
+            <!-- Year Filter -->
+            <div class="col-md-3 mb-3">
+              <label for="yearRange" class="form-label">Release Year</label>
+              <div class="d-flex gap-2">
+                <input type="number" class="form-control" id="yearFrom" placeholder="From" min="1900" max="2024">
+                <input type="number" class="form-control" id="yearTo" placeholder="To" min="1900" max="2024">
+              </div>
+            </div>
+            
+            <!-- Rating Filter -->
+            <div class="col-md-3 mb-3">
+              <label for="ratingRange" class="form-label">Minimum Rating</label>
+              <div class="d-flex align-items-center gap-2">
+                <input type="range" class="form-range w-75" id="ratingRange" min="0" max="10" step="0.5" value="0">
+                <span id="ratingValue" class="badge bg-primary">0+</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Second Row -->
+          <div class="row">
+            <!-- Language Filter -->
+            <div class="col-md-3 mb-3">
+              <label for="languageSelect" class="form-label">Language</label>
+              <select class="form-select" id="languageSelect">
+                <option value="">All Languages</option>
+                <option value="en">English</option>
+                <option value="es">Spanish</option>
+                <option value="fr">French</option>
+                <option value="de">German</option>
+                <option value="ja">Japanese</option>
+                <option value="ko">Korean</option>
+                <option value="zh">Chinese</option>
+                <option value="hi">Hindi</option>
+                <!-- Add more languages as needed -->
+              </select>
+            </div>
+            
+            <!-- Search Input -->
+            <div class="col-md-6 mb-3">
+              <label for="searchInput" class="form-label">Search</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="searchInput" placeholder="Search titles, actors, directors...">
+                <button class="btn btn-primary" type="button" id="searchButton">
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+            </div>
+            
+            <!-- Apply Filters Button -->
+            <div class="col-md-3 mb-3 d-flex align-items-end">
+              <button class="btn btn-primary w-100" id="applyFilters">Apply Filters</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container py-3">
+      <div class="row movies_grid g-1"></div>
+    </div>
+    <!-- ------------------- -->
+
+    <script src="../js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Filter Functionality Script -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Populate genres (this would typically come from an API call)
+        const genres = [
+          {id: 28, name: "Action"},
+          {id: 12, name: "Adventure"},
+          {id: 16, name: "Animation"},
+          {id: 35, name: "Comedy"},
+          {id: 80, name: "Crime"},
+          {id: 99, name: "Documentary"},
+          {id: 18, name: "Drama"},
+          {id: 10751, name: "Family"},
+          {id: 14, name: "Fantasy"},
+          {id: 36, name: "History"},
+          {id: 27, name: "Horror"},
+          {id: 10402, name: "Music"},
+          {id: 9648, name: "Mystery"},
+          {id: 10749, name: "Romance"},
+          {id: 878, name: "Science Fiction"},
+          {id: 10770, name: "TV Movie"},
+          {id: 53, name: "Thriller"},
+          {id: 10752, name: "War"},
+          {id: 37, name: "Western"}
+        ];
+        
+        const genreSelect = document.getElementById('genreSelect');
+        genres.forEach(genre => {
+          const option = document.createElement('option');
+          option.value = genre.id;
+          option.textContent = genre.name;
+          genreSelect.appendChild(option);
+        });
+        
+        // Rating range display
+        const ratingRange = document.getElementById('ratingRange');
+        const ratingValue = document.getElementById('ratingValue');
+        
+        ratingRange.addEventListener('input', function() {
+          ratingValue.textContent = this.value + '+';
+        });
+        
+        // Reset filters button
+        document.getElementById('resetFilters').addEventListener('click', function() {
+          document.getElementById('genreSelect').selectedIndex = -1;
+          document.getElementById('sortSelect').selectedIndex = 0;
+          document.getElementById('yearFrom').value = '';
+          document.getElementById('yearTo').value = '';
+          document.getElementById('ratingRange').value = 0;
+          ratingValue.textContent = '0+';
+          document.getElementById('languageSelect').selectedIndex = 0;
+          document.getElementById('searchInput').value = '';
+        });
+        
+        // Apply filters button
+        document.getElementById('applyFilters').addEventListener('click', function() {
+          // Collect all filter values
+          const selectedGenres = Array.from(genreSelect.selectedOptions).map(option => option.value);
+          const sortBy = document.getElementById('sortSelect').value;
+          const yearFrom = document.getElementById('yearFrom').value;
+          const yearTo = document.getElementById('yearTo').value;
+          const minRating = document.getElementById('ratingRange').value;
+          const language = document.getElementById('languageSelect').value;
+          const searchQuery = document.getElementById('searchInput').value;
+          
+          // Build filter object to pass to your API function
+          const filters = {
+            genres: selectedGenres.join(','),
+            sort_by: sortBy,
+            'primary_release_date.gte': yearFrom ? `${yearFrom}-01-01` : '',
+            'primary_release_date.lte': yearTo ? `${yearTo}-12-31` : '',
+            'vote_average.gte': minRating,
+            with_original_language: language,
+            query: searchQuery
+          };
+          
+          console.log('Applied filters:', filters);
+          
+          // You would then call your fetchMovies function with these filters
+          // fetchMovies(filters);
+        });
+      });
+    </script>
+  </body>
+</html>

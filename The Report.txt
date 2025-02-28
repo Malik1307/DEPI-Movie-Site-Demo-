@@ -1,0 +1,117 @@
+### **Detailed Report on Solution Approach and Implementation Steps**
+
+## **1. Introduction**
+The project is a movie-related web application that allows users to search for movies, view details, browse categories, and manage authentication. It interacts with **The Movie Database (TMDB) API** for fetching movie-related data. The implementation consists of multiple JavaScript files handling different functionalities.
+
+---
+
+## **2. Solution Approach**
+The implementation is structured around **modular JavaScript files**, each handling a specific aspect of the application:
+
+1. **Authentication (`auth.js`)** – Handles user signup and login.
+2. **Search Functionality (`search.js`)** – Manages user search and TMDB API queries.
+3. **Actor Details (`actor.js`)** – Fetches and displays actor information.
+4. **Browse Categories (`browse-category.js`)** – Filters and displays movies by category.
+5. **Main Page (`main.js`)** – Loads trending movies and manages pagination.
+6. **Movie Details (`movie-details.js`)** – Displays detailed movie information.
+
+---
+
+## **3. Implementation Steps**
+
+### **3.1 Authentication (auth.js)**
+- **Signup and Login Forms:** 
+  - Users enter credentials which are validated using regex (`isValidEmail`, `isValidPassword`).
+  - Passwords are hashed using the `crypto.subtle.digest("SHA-256")` method before storage.
+  - Credentials are stored in `localStorage` for authentication purposes.
+- **Login Functionality:**
+  - Retrieves stored credentials and verifies hashed passwords.
+  - Redirects authenticated users to the home page.
+- **Security Measures:**
+  - Password hashing ensures user data security.
+  - Simple client-side validation prevents weak passwords.
+
+🔹 **Key Functions:**
+- `hashPassword(password)`: Hashes passwords before storage.
+- `isValidEmail(email)`: Validates email format.
+- `isValidPassword(password)`: Checks for a strong password.
+
+---
+
+### **3.2 Search Functionality (search.js)**
+- **Handles user input search queries.**
+- **Redirection to the search results page (`search-results.html`).**
+- **Calls the TMDB API to fetch search results.**
+- **Categorizes results into Movies, TV Shows, and People.**
+- **Displays results dynamically in the UI.**
+
+🔹 **Key Implementation Steps:**
+1. Listens to search form submission.
+2. Extracts search query and updates the URL.
+3. Fetches search results using TMDB’s `/search/multi` endpoint.
+4. Filters results into categories (`movies`, `shows`, `people`).
+5. Renders the results dynamically in HTML.
+
+---
+
+### **3.3 Actor Details (actor.js)**
+- **Extracts actor ID from the URL.**
+- **Fetches actor details from the TMDB API.**
+- **Displays actor biography, image, and known movies.**
+- **Dynamically updates the UI with actor data.**
+
+🔹 **Key Functions:**
+- `fetchActorDetails()`: Fetches actor details using the TMDB API.
+- `updateActorUI(actor)`: Updates actor biography, image, and details.
+- `updateMoviesGrid(movies)`: Displays movies featuring the actor.
+
+---
+
+### **3.4 Browse Categories (browse-category.js)**
+- **Fetches and displays movies based on selected genres.**
+- **Supports filtering by release date and sorting options.**
+- **Implements a dropdown selection for filtering genres dynamically.**
+- **Dynamically updates the movie grid.**
+
+🔹 **Key Features:**
+- `fetchingBrowseCategory(filters)`: Fetches movies based on selected filters.
+- `initGenreSelector()`: Initializes the genre selection dropdown.
+- `setupFilterControls()`: Handles user interactions with filters.
+
+---
+
+### **3.5 Main Page (`main.js`)**
+- **Loads trending movies from TMDB.**
+- **Implements a carousel for featured movies.**
+- **Handles pagination for browsing movies.**
+
+🔹 **Key Implementation:**
+- `loadMovies(page)`: Fetches and displays trending movies.
+- `fetchTrending()`: Retrieves trending movies from TMDB.
+- `createCarouselItem(movie, isActive)`: Generates carousel slides.
+
+---
+
+### **3.6 Movie Details (`movie-details.js`)**
+- **Fetches movie details from the TMDB API.**
+- **Displays movie title, rating, release year, and runtime.**
+- **Loads the cast, trailer, and recommendations.**
+- **Implements a “Watch Later” feature using `localStorage`.**
+
+🔹 **Key Functions:**
+- `fetchMovieDetails()`: Retrieves movie details from TMDB.
+- `updateMovieDetails(movie)`: Updates the UI with fetched details.
+- `findBestTrailer(videos)`: Identifies and displays the best YouTube trailer.
+- `updateCastGrid(cast)`: Displays the main cast.
+
+---
+
+## **4. Conclusion**
+The project successfully implements **a movie search and browsing web application** with **API integration**, **authentication**, and **dynamic UI rendering**. The modular structure ensures maintainability, scalability, and **efficient interaction with TMDB's API**. 
+
+### **Future Enhancements:**
+- Implement **server-side authentication** instead of using `localStorage`.
+- Optimize API calls with **caching mechanisms**.
+- Improve **UI responsiveness** and **error handling**.
+
+🔹 **Overall, the implementation follows best practices in JavaScript development, ensuring an interactive and seamless user experience.** 🚀

@@ -1,0 +1,17 @@
+.logo {
+  display: flex;
+  justify-content: center;
+}
+.logo .logo_icon {
+  margin-right: 10px;
+  width: 40px;
+  height: 40px;
+}
+.logo h1{
+  margin: 0;
+  color: white;
+  font-size: 1.25rem;   /* Makes it slightly larger than normal text */
+  font-weight: 500;     /* Gives it medium font weight */
+  text-decoration: none; /* Removes underline */
+  white-space: nowrap;  
+}

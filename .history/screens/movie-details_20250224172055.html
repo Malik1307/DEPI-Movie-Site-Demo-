@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Story of Detective Zhan Zhao</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #0a0a0a;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .movie-container {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      height: 500px;
+    }
+    
+    .movie-header {
+      position: relative;
+      padding: 2rem 0;
+      height: 100%;
+      z-index: 2;
+    }
+    
+    .movie-backdrop {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: linear-gradient(90deg, #0a0a0a 0%, rgba(10,10,10,0.8) 30%, rgba(10,10,10,0.4) 60%, rgba(10,10,10,0) 100%);
+    }
+    
+    .movie-poster {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 60%;
+      height: 100%;
+      background-image: url('https://image.tmdb.org/t/p/original/6aoyUbvu0419XLKLIMoH0TkEicH.jpg');
+      background-size: cover;
+      background-position: center;
+      z-index: -2;
+      mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.5) 20%, rgba(0,0,0,1) 40%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.5) 20%, rgba(0,0,0,1) 40%);
+    }
+    
+    .movie-title {
+      font-size: 2.8rem;
+      font-weight: bold;
+      margin-bottom: 1.5rem;
+    }
+    
+    .badge-top {
+      background-color: #1db954;
+      color: white;
+      font-weight: bold;
+      padding: 0.3rem 0.6rem;
+      border-radius: 0.25rem;
+      margin-right: 0.5rem;
+    }
+    
+    .badge-vip {
+      background-color: #d4af37;
+      color: white;
+      font-weight: bold;
+      padding: 0.3rem 0.6rem;
+      border-radius: 0.25rem;
+    }
+    
+    .movie-rating {
+      display: flex;
+      align-items: center;
+      margin: 1rem 0;
+    }
+    
+    .rating-star {
+      color: #1db954;
+      margin-right: 0.5rem;
+    }
+    
+    .movie-info {
+      display: flex;
+      margin: 1rem 0;
+    }
+    
+    .movie-info span {
+      margin-right: 1.5rem;
+    }
+    
+    .movie-tags {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 1rem 0;
+    }
+    
+    .movie-tag {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 0.3rem 0.8rem;
+      border-radius: 0.25rem;
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .vip-banner {
+      background-color: rgba(212, 175, 55, 0.1);
+      border: 1px solid #d4af37;
+      border-radius: 0.25rem;
+      padding: 0.8rem;
+      margin: 1rem 0;
+      display: flex;
+      align-items: center;
+    }
+    
+    .vip-icon {
+      color: #d4af37;
+      margin-right: 0.5rem;
+    }
+    
+    .movie-meta {
+      margin: 1rem 0;
+    }
+    
+    .meta-label {
+      color: #999;
+      margin-right: 0.5rem;
+    }
+    
+    .movie-description {
+      margin: 1rem 0;
+      line-height: 1.6;
+    }
+    
+    .more-btn {
+      color: #1db954;
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+    }
+    
+    .action-buttons {
+      display: flex;
+      margin: 1.5rem 0;
+    }
+    
+    .btn-play {
+      background-color: #1db954;
+      color: white;
+      border: none;
+      padding: 0.6rem 1.5rem;
+      border-radius: 0.25rem;
+      margin-right: 0.8rem;
+      display: flex;
+      align-items: center;
+    }
+    
+    .btn-secondary {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: white;
+      border: none;
+      padding: 0.6rem 1.5rem;
+      border-radius: 0.25rem;
+      margin-right: 0.8rem;
+      display: flex;
+      align-items: center;
+    }
+    
+    .btn-icon {
+      margin-right: 0.5rem;
+    }
+    
+    .tabs {
+      display: flex;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .tab {
+      padding: 1rem 1.5rem;
+      cursor: pointer;
+      position: relative;
+    }
+    
+    .tab.active {
+      color: #1db954;
+    }
+    
+    .tab.active::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: #1db954;
+    }
+    
+    .cast-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    
+    .cast-card {
+      background-color: #151515;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+    
+    .cast-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .cast-img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+    }
+    
+    .cast-info {
+      padding: 1rem;
+    }
+    
+    .cast-name {
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin: 0;
+    }
+    
+    .cast-character {
+      color: #aaa;
+      margin-top: 0.3rem;
+      font-size: 0.9rem;
+    }
+    
+    .tab-content {
+      display: none;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .movie-title {
+        font-size: 2rem;
+      }
+      
+      .movie-poster {
+        width: 100%;
+      }
+      
+      .cast-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="movie-container">
+    <div class="movie-backdrop"></div>
+    <div class="movie-poster"></div>
+    
+    <div class="container-fluid px-4">
+      <div class="row movie-header">
+        <div class="col-lg-7">
+          <h1 class="movie-title">THE STORY OF DETECTIVE<br>ZHAN ZHAO</h1>
+          
+          <div>
+            <span class="badge-top">TOP 1</span>
+            <span class="badge text-bg-secondary">New Movies</span>
+            <span class="badge-vip">VIP</span>
+          </div>
+          
+          <div class="movie-rating">
+            <span class="rating-star"><i class="fas fa-star"></i></span>
+            <span class="fw-bold">8.8</span>
+          </div>
+          
+          <div class="movie-info">
+            <span>13+</span>
+            <span>2025</span>
+            <span>1 h 28 m</span>
+          </div>
+          
+          <div class="movie-tags">
+            <span class="movie-tag">Chinese Mainland</span>
+            <span class="movie-tag">Mystery</span>
+            <span class="movie-tag">Action</span>
+            <span class="movie-tag">Costume</span>
+            <span class="movie-tag">Revenge</span>
+          </div>
+          
+          <div class="vip-banner">
+            <span class="vip-icon"><i class="fas fa-crown"></i></span>
+            <span>Subscribe to VIP, Enjoy watching our amazing content!</span>
+          </div>
+          
+          <div class="movie-meta">
+            <span class="meta-label">Director:</span>
+            <span>Unknown</span>
+          </div>
+          
+          <div class="movie-meta">
+            <span class="meta-label">Cast:</span>
+            <span>Unknown</span>
+          </div>
+          
+          <div class="movie-description">
+            <span class="meta-label">Description:</span>
+            <span>In the fourth year of Jiayou in the Northern Song Dynasty, a shocking private salt case was exposed, uncovering a sinister plot involving Zhang Keiju, the Huainan Transport Commissioner, who colluded with the Liao people in treason. Kaifeng Prefecture's Zhan Zhao was ordered...
+            <button class="more-btn">More ∨</button>
+            </span>
+          </div>
+          
+          <div class="action-buttons">
+            <button class="btn-play">
+              <span class="btn-icon"><i class="fas fa-play"></i></span>
+              Play
+            </button>
+            <button class="btn-secondary">
+              <span class="btn-icon"><i class="fas fa-share-alt"></i></span>
+              Share
+            </button>
+            <button class="btn-secondary">
+              <span class="btn-icon"><i class="fas fa-mobile-alt"></i></span>
+              APP
+            </button>
+            <button class="btn-secondary">
+              <span class="btn-icon"><i class="fas fa-clock"></i></span>
+              Watch Later
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container-fluid px-4 mt-5">
+    <div class="tabs">
+      <div class="tab active" data-tab="cast">Cast</div>
+      <div class="tab" data-tab="recommended">Recommended</div>
+    </div>
+    
+    <div id="cast" class="tab-content active">
+      <div class="cast-grid">
+        <!-- Cast Card 1 -->
+        <div class="cast-card">
+          <img src="https://media.themoviedb.org/t/p/w276_and_h350_face/cg3LW0xX6RKr8dmescxq1bepcb5.jpg" alt="Actor 1" class="cast-img">
+          <div class="cast-info">
+            <h3 class="cast-name">Miles Teller</h3>
+            <p class="cast-character">Levi</p>
+          </div>
+        </div>
+        
+        <!-- Cast Card 2 -->
+        <div class="cast-card">
+          <img src="https://media.themoviedb.org/t/p/w276_and_h350_face/cg3LW0xX6RKr8dmescxq1bepcb5.jpg" alt="Actor 2" class="cast-img">
+          <div class="cast-info">
+            <h3 class="cast-name">Anya Taylor-Joy</h3>
+            <p class="cast-character">Drasa</p>
+          </div>
+        </div>
+        
+        <!-- Cast Card 3 -->
+        <div class="cast-card">
+          <img src="https://media.themoviedb.org/t/p/w276_and_h350_face/cg3LW0xX6RKr8dmescxq1bepcb5.jpg" alt="Actor 3" class="cast-img">
+          <div class="cast-info">
+            <h3 class="cast-name">Sigourney Weaver</h3>
+            <p class="cast-character">Bartholomew</p>
+          </div>
+        </div>
+        
+        <!-- Cast Card 4 -->
+        <div class="cast-card">
+          <img src="https://media.themoviedb.org/t/p/w276_and_h350_face/cg3LW0xX6RKr8dmescxq1bepcb5.jpg" alt="Actor 4" class="cast-img">
+          <div class="cast-info">
+            <h3 class="cast-name">Sope Dirisu</h3>
+            <p class="cast-character">J.D.</p>
+          </div>
+        </div>
+        
+        <!-- Cast Card 5 -->
+        <div class="cast-card">
+          <img src="https://media.themoviedb.org/t/p/w276_and_h350_face/cg3LW0xX6RKr8dmescxq1bepcb5.jpg" alt="Actor 5" class="cast-img">
+          <div class="cast-info">
+            <h3 class="cast-name">William Houston</h3>
+            <p class="cast-character">Erikas</p>
+          </div>
+        </div>
+        
+        <!-- Cast Card 6 -->
+        <div class="cast-card">
+          <img src="https://media.themoviedb.org/t/p/w276_and_h350_face/cg3LW0xX6RKr8dmescxq1bepcb5.jpg" alt="Actor 6" class="cast-img">
+          <div class="cast-info">
+            <h3 class="cast-name">Kobna Holdbrook-Smith</h3>
+            <p class="cast-character">Black Ops Commander</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div id="recommended" class="tab-content">
+      <div class="row">
+        <div class="col-12">
+          <p>Recommended movies will appear here.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // More button functionality
+      const moreBtn = document.querySelector('.more-btn');
+      const description = document.querySelector('.movie-description span:not(.meta-label)');
+      const fullText = 'In the fourth year of Jiayou in the Northern Song Dynasty, a shocking private salt case was exposed, uncovering a sinister plot involving Zhang Keiju, the Huainan Transport Commissioner, who colluded with the Liao people in treason. Kaifeng Prefecture\'s Zhan Zhao was ordered to investigate the case and bring the criminals to justice.';
+      const shortText = fullText.substring(0, 200) + '...';
+      
+      let isExpanded = false;
+      
+      moreBtn.addEventListener('click', function() {
+        if (isExpanded) {
+          description.textContent = shortText;
+          moreBtn.textContent = 'More ∨';
+        } else {
+          description.textContent = fullText;
+          moreBtn.textContent = 'Less ∧';
+        }
+        isExpanded = !isExpanded;
+      });
+      
+      // Tab functionality
+      const tabs = document.querySelectorAll('.tab');
+      const tabContents = document.querySelectorAll('.tab-content');
+      
+      tabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+          const tabId = this.getAttribute('data-tab');
+          
+          // Update active tab
+          tabs.forEach(t => t.classList.remove('active'));
+          this.classList.add('active');
+          
+          // Update active content
+          tabContents.forEach(content => content.classList.remove('active'));
+          document.getElementById(tabId).classList.add('active');
+        });
+      });
+    });
+  </script>
+</body>
+</html>

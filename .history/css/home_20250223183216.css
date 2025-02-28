@@ -1,0 +1,25 @@
+.logo {
+  display: flex;
+  justify-content: center;
+}
+.logo .logo_icon {
+  margin-right: 10px;
+  width: 40px;
+  height: 40px;
+}
+.logo h1{ 
+  margin :auto 0;
+}
+.carousel-item img {
+  background-position: center;
+  width: 100%;
+  height: auto;
+  max-height: 500px; /* Adjust height as needed */
+  object-fit: cover; /* Ensures the image covers the area without distortion */
+  .carousel-item {
+    background-size: cover; /* Ensures it fills the container */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat;
+    height: 500px; /* Adjust based on your design */
+}
+}

@@ -1,0 +1,350 @@
+:root {
+  --main-color: #13c6b0;
+  --primary-color: #141414;
+  --secondary-color: #1f1f1f;
+  --text-color: #ffffff;
+  --accent-color: #4caf50;
+  --rating-color: #ffc107;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a {
+  padding: 0;
+  text-decoration: none;
+}
+:root {
+  --main-color: #13c6b0;
+}
+body {
+  background-color: black;
+}
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 99;
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  background: #232b32; /* Dark Background */
+  border-radius: 25px; /* Rounded Edges */
+  padding: 10px 15px;
+  width: 250px; /* Adjust as needed */
+}
+
+.search-input {
+  border: none;
+  background: transparent;
+  outline: none;
+  color: #fff;
+  flex: 1;
+}
+.search-input :focus {
+  display: none;
+}
+
+.search-button {
+  background: none;
+  border: none;
+  color: #b0b3b8; /* Light grey */
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.search-button:hover {
+  color: #fff; /* Brighter on hover */
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+}
+.logo .logo_icon {
+  margin-right: 10px;
+  width: 40px;
+  height: 40px;
+}
+.logo h1 {
+  color: var(--main-color);
+  margin: auto 0;
+}
+.movie-container {
+  margin-bottom: 20px;
+
+  position: relative; /* Added to allow proper hover positioning */
+}
+
+.movie-card {
+  width: 100%;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
+}
+
+.movie-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.top-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: var(--main-color);
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 5px;
+}
+
+.movie-card + .movie-title {
+  margin: 0 0 20px 0;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: gray;
+}
+
+.movie-card:hover + .movie-title {
+  color: white;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  transition: margin 0.3s ease-in-out;
+}
+
+.image-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.image-container img {
+  width: 100%;
+  display: block;
+  border-radius: 8px;
+}
+
+.image-container .overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  border-radius: 8px;
+}
+
+.rating {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  font-size: 12px;
+  font-weight: bold;
+  z-index: 2;
+  color: whitesmoke;
+}
+
+.rating i {
+  font-size: 8px;
+  color: whitesmoke;
+}
+
+/* New styles for hover detail */
+.movie-detail {
+  position: absolute;
+  left: 100%;
+  top: 0;
+  width: 280px;
+  background-color: #1f1f1f;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s;
+  overflow: hidden;
+}
+
+.movie-container:hover .movie-detail {
+  opacity: 1;
+  visibility: visible;
+}
+
+.detail-backdrop {
+  position: relative;
+  height: 150px;
+}
+
+.detail-backdrop img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.detail-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  color: white;
+  font-weight: bold;
+}
+
+.detail-info {
+  padding: 10px;
+}
+
+.detail-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.detail-rating {
+  color: #ffc107;
+  font-weight: bold;
+}
+
+.detail-year-time {
+  color: #aaa;
+  font-size: 14px;
+}
+
+.detail-tags {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 8px;
+}
+
+.tag {
+  background-color: #333;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.detail-description {
+  font-size: 12px;
+  color: #ddd;
+  margin-bottom: 8px;
+  display: -webkit-box;
+  overflow: hidden;
+}
+/* Movie card hover detail styles */
+.movie-card-link {
+  position: relative;
+  display: block;
+  text-decoration: none;
+}
+
+.movie-detail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  background-color: rgba(15, 15, 15, 0.95);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+
+.movie-card-link:hover .movie-detail {
+  opacity: 1;
+  visibility: visible;
+}
+
+.detail-backdrop {
+  position: relative;
+  height: 150px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  overflow: hidden;
+}
+
+.detail-backdrop img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  transition: 0.3s;
+}
+
+.detail-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.detail-info {
+  padding: 10px;
+}
+
+.detail-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.detail-rating {
+  color: #ffc107;
+  font-weight: bold;
+}
+
+.detail-year-time {
+  color: #aaa;
+  font-size: 12px;
+}
+
+.detail-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 8px;
+}
+
+.tag {
+  background-color: #333;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  color: #fff;
+}
+
+.detail-description {
+  font-size: 12px;
+  color: #ddd;
+  margin-bottom: 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

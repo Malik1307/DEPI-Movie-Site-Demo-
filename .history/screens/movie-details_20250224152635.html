@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taxi Driver (1976) • Letterboxd</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --letterboxd-dark: #14181c;
+            --letterboxd-darker: #0f1318;
+            --letterboxd-light-text: #99aabb;
+            --letterboxd-lighter-text: #bcd;
+            --letterboxd-green: #00c030;
+            --letterboxd-link: #40bcf4;
+        }
+        
+        body {
+            background-color: var(--letterboxd-dark);
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.4;
+        }
+        
+        a {
+            color: var(--letterboxd-link);
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .film-header {
+            display: flex;
+            background-color: var(--letterboxd-darker);
+            padding: 20px;
+            gap: 20px;
+        }
+        
+        .film-poster {
+            width: 230px;
+            min-width: 230px;
+            position: relative;
+        }
+        
+        .poster-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .poster-rating {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 5px 10px;
+            width: 100%;
+            font-size: 12px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .film-details {
+            flex-grow: 1;
+        }
+        
+        .film-title-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .film-title-group h1 {
+            font-size: 32px;
+            margin: 0;
+            font-weight: bold;
+        }
+        
+        .film-year {
+            color: var(--letterboxd-light-text);
+            margin-left: 8px;
+        }
+        
+        .sign-in-box {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 10px 15px;
+            font-size: 13px;
+            border-radius: 3px;
+        }
+        
+        .share-btn {
+            border: none;
+            background-color: transparent;
+            color: var(--letterboxd-light-text);
+            font-size: 13px;
+            padding: 10px 15px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .film-description {
+            color: var(--letterboxd-lighter-text);
+            font-size: 15px;
+            margin-bottom: 20px;
+            max-width: 600px;
+        }
+        
+        .tagline {
+            color: var(--letterboxd-light-text);
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .review-section {
+            padding: 20px;
+        }
+        
+        .nav-tabs {
+            margin-top: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-tabs .nav-link {
+            color: var(--letterboxd-light-text);
+            background-color: transparent;
+            border: none;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 10px 15px;
+            margin-right: 5px;
+        }
+        
+        .nav-tabs .nav-link.active {
+            color: #fff;
+            background-color: transparent;
+            border-bottom: 2px solid var(--letterboxd-link);
+        }
+        
+        .ratings-section {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .ratings-label {
+            font-size: 14px;
+            color: var(--letterboxd-light-text);
+            margin-bottom: 10px;
+        }
+        
+        .rating-average {
+            font-size: 24px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .rating-histogram {
+            display: flex;
+            height: 100px;
+            width: 200px;
+            align-items: flex-end;
+        }
+        
+        .rating-bar {
+            width: 20%;
+            margin-right: 2px;
+            background-color: var(--letterboxd-green);
+        }
+        
+        .cast-list {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0 20px;
+        }
+        
+        .cast-member {
+            width: 12.5%;
+            padding: 5px 10px;
+            box-sizing: border-box;
+            font-size: 13px;
+        }
+        
+        .cast-name {
+            color: var(--letterboxd-link);
+        }
+        
+        .runtime-info {
+            color: var(--letterboxd-light-text);
+            font-size: 13px;
+            margin: 20px;
+        }
+        
+        .news-section {
+            padding: 0 20px;
+        }
+        
+        .news-item {
+            display: flex;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 15px;
+        }
+        
+        .news-image {
+            width: 120px;
+            height: 80px;
+            margin-right: 15px;
+        }
+        
+        .news-content {
+            flex-grow: 1;
+        }
+        
+        .news-label {
+            font-size: 12px;
+            color: var(--letterboxd-light-text);
+            margin-bottom: 5px;
+        }
+        
+        .news-title {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .show-all {
+            text-align: right;
+            margin: 20px;
+            font-size: 13px;
+        }
+        
+        .where-to-watch {
+            margin-top: 20px;
+            font-size: 13px;
+            color: var(--letterboxd-light-text);
+        }
+        
+        .watch-options {
+            margin-top: 10px;
+        }
+        
+        .watch-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+            padding: 10px;
+        }
+        
+        .watch-option-logo {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+            background-color: #333;
+            border-radius: 4px;
+        }
+        
+        .watch-option-name {
+            flex-grow: 1;
+        }
+        
+        .watch-option-buttons {
+            display: flex;
+        }
+        
+        .watch-button {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: #fff;
+            font-size: 12px;
+            padding: 3px 8px;
+            margin-left: 5px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        
+        .customize-list {
+            margin-top: 15px;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .pro-badge {
+            background-color: #ff8000;
+            color: #000;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 2px 5px;
+            border-radius: 3px;
+            margin-right: 5px;
+        }
+        
+        /* Rating stars styles */
+        .rating-stars {
+            display: flex;
+            margin-top: 10px;
+        }
+        
+        .rating-bar-container {
+            width: 200px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .rating-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--letterboxd-green);
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+        
+        /* Histogram bars with different heights */
+        .bar-1 { height: 5%; }
+        .bar-2 { height: 10%; }
+        .bar-3 { height: 15%; }
+        .bar-4 { height: 30%; }
+        .bar-5 { height: 100%; }
+    </style>
+</head>
+<body>
+    <div class="film-header">
+        <!-- Poster Column -->
+        <div class="film-poster">
+            <!-- Replace with your actual image source -->
+            <img class="poster-image" src="" alt="Taxi Driver Poster">
+            <div class="poster-rating">
+                <span>⭐ 2.3M</span>
+                <span>📝 354K</span>
+                <span>👁️ 621K</span>
+            </div>
+        </div>
+        
+        <!-- Film Details Column -->
+        <div class="film-details">
+            <div class="film-title-container">
+                <div class="film-title-group">
+                    <h1>Taxi Driver <span class="film-year">1976</span></h1>
+                    <div>Directed by <a href="#">Martin Scorsese</a></div>
+                </div>
+                <div>
+                    <div class="sign-in-box">
+                        <a href="#">Sign in</a> to log, rate or review
+                    </div>
+                    <button class="share-btn">Share</button>
+                </div>
+            </div>
+            
+            <div class="tagline">
+                ON EVERY STREET IN EVERY CITY, THERE'S A NOBODY WHO DREAMS OF BEING A SOMEBODY.
+            </div>
+            
+            <div class="film-description">
+                A mentally unstable Vietnam War veteran works as a night-time taxi driver in New York City where the perceived decadence and sleaze feed his urge for violent action.
+            </div>
+            
+            <div style="margin-bottom: 10px; color: var(--letterboxd-light-text); font-size: 12px;">
+                REVIEW 422 →
+            </div>
+            
+            <div class="ratings-section">
+                <div>
+                    <div class="ratings-label">RATINGS</div>
+                    <div class="rating-average">4.1</div>
+                </div>
+                <div>
+                    <div class="ratings-label">50K FANS</div>
+                    <div class="rating-stars">
+                        <div class="rating-dot"></div>
+                        <div class="rating-dot"></div>
+                        <div class="rating-dot"></div>
+                        <div class="rating-dot"></div>
+                        <div class="rating-dot" style="background-color: rgba(0, 192, 48, 0.5);"></div>
+                    </div>
+                    <div class="rating-bar-container mt-2">
+                        <div class="rating-bar bar-1"></div>
+                        <div class="rating-bar bar-2"></div>
+                        <div class="rating-bar bar-3"></div>
+                        <div class="rating-bar bar-4"></div>
+                        <div class="rating-bar bar-5"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Navigation Tabs -->
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">CAST</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">CREW</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">DETAILS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">GENRES</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">RELEASES</a>
+                </li>
+            </ul>
+            
+            <!-- Cast List -->
+            <div class="cast-list">
+                <div class="cast-member"><a class="cast-name" href="#">Robert De Niro</a></div>
+                <div class="cast-member"><a class="cast-name" href="#">Jodie Foster</a></div>
+                <div class="cast-member"><a class="cast-name" href="#">Cybil Shepherd</a></div>
+                <div class="cast-member"><a class="cast-name" href="#">Harvey Keitel</a></div>
+                <div class="cast-member"><a class="cast-name" href="#">Peter Boyle</a></div>
+                <div class="cast-member"><a class="cast-name" href="#">Leonard Harris</a></div>
+                <div class="cast-member"><a class="cast-name" href="#">Albert Brooks</a></div>
+                <div class="cast-member"><a class="cast-name" href="#">Diahnne Abbott</a></div>
+                <div class="cast-member"><a class="cast-name" href="#">Frank Adu</a></div>
+                <div class="cast-member"><a class="cast-name" href="#">Victor Argo</a></div>
+                <div class="cast-member"><a class="cast-name" href="#">Gino Austin</a></div>
+                <div class="cast-member"><a class="cast-name" href="#">Garth Avery</a></div>
+                <div class="cast-member"><a class="cast-name" href="#">Harry Cohn</a></div>
+                <div class="cast-member"><a class="cast-name" href="#">Cooper Cunningham</a></div>
+                <div class="cast-member"><a class="cast-name" href="#">Brenda Dickson</a></div>
+                <div class="cast-member"><a class="cast-name" href="#">Harry Fischler</a></div>
+                <div class="cast-member"><a class="cast-name" href="#">Nat Grant</a></div>
+                <div class="cast-member"><a class="cast-name" href="#">Richard Higgs</a></div>
+                <div class="cast-member"><a class="cast-name" href="#">Beau Kayser</a></div>
+                <div class="cast-member"><a class="cast-name" href="#">Victor Magnotta</a></div>
+                <div class="cast-member"><a class="cast-name" href="#">Bob Maroff</a></div>
+                <div class="cast-member"><a class="cast-name" href="#">Norman Matlock</a></div>
+                <div class="cast-member"><a class="cast-name" href="#">Bill Minkin</a></div>
+                <div class="cast-member"><a class="cast-name" href="#">Murray Moston</a></div>
+                <div class="cast-member"><a class="cast-name" href="#">Harry Northup</a></div>
+                <div class="cast-member"><a class="cast-name" href="#">Gene Palma</a></div>
+                <div class="cast-member"><a class="cast-name" href="#">Martin Scorsese</a></div>
+                <div class="cast-member"><a class="cast-name" href="#">Harlan Cary Poe</a></div>
+                <div class="cast-member"><a class="cast-name" href="#">Steven Prince</a></div>
+                <div class="cast-member"><a class="cast-name" href="#">Peter Savage</a></div>
+                <div class="cast-member"><a class="cast-name" href="#">Show All...</a></div>
+            </div>
+            
+            <div class="runtime-info">
+                114 mins · More at: <a href="#">IMDB</a> · <a href="#">TMDB</a>
+            </div>
+            
+            <!-- News Section -->
+            <div class="news-section">
+                <!-- News Item 1 -->
+                <div class="news-item">
+                    <!-- Replace with your actual image source -->
+                    <img class="news-image" src="news_image1.jpg" alt="News Image">
+                    <div class="news-content">
+                        <div class="news-label">NEWS / <a href="#">Taxi Driver</a> superfans on the film's lurid ambiguity and complicated cultural legacy</div>
+                        <div class="news-title"><a href="#">READ POST</a></div>
+                    </div>
+                </div>
+                
+                <!-- News Item 2 -->
+                <div class="news-item">
+                    <!-- Replace with your actual image source -->
+                    <img class="news-image" src="news_image2.jpg" alt="News Image">
+                    <div class="news-content">
+                        <div class="news-label">NEWS / Reminiscing on ten of our worst dates spent at the cinema</div>
+                        <div class="news-title"><a href="#">READ POST</a></div>
+                    </div>
+                </div>
+                
+                <!-- News Item 3 -->
+                <div class="news-item">
+                    <!-- Replace with your actual image source -->
+                    <img class="news-image" src="news_image3.jpg" alt="News Image">
+                    <div class="news-content">
+                        <div class="news-label">NEWS / Paul Schrader discusses empathy, gardeners and pickpocket</div>
+                        <div class="news-title"><a href="#">READ POST</a></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="show-all">
+                <a href="#">Show All</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Where to Watch Section -->
+    <div style="padding: 0 20px;">
+        <div class="where-to-watch">WHERE TO WATCH</div>
+        
+        <div class="watch-options">
+            <!-- Amazon Prime -->
+            <div class="watch-option">
+                <!-- Replace with actual logo -->
+                <div class="watch-option-logo"></div>
+                <div class="watch-option-name">Amazon US</div>
+                <div class="watch-option-buttons">
+                    <button class="watch-button">RENT</button>
+                    <button class="watch-button">BUY</button>
+                </div>
+            </div>
+            
+            <!-- Apple TV -->
+            <div class="watch-option">
+                <!-- Replace with actual logo -->
+                <div class="watch-option-logo"></div>
+                <div class="watch-option-name">Apple TV US</div>
+                <div class="watch-option-buttons">
+                    <button class="watch-button">RENT</button>
+                    <button class="watch-button">BUY</button>
+                </div>
+            </div>
+            
+            <!-- Google Play -->
+            <div class="watch-option">
+                <!-- Replace with actual logo -->
+                <div class="watch-option-logo"></div>
+                <div class="watch-option-name">Google Play — US</div>
+                <div class="watch-option-buttons">
+                    <button class="watch-button">RENT</button>
+                    <button class="watch-button">BUY</button>
+                </div>
+            </div>
+            
+            <!-- Fandango -->
+            <div class="watch-option">
+                <!-- Replace with actual logo -->
+                <div class="watch-option-logo"></div>
+                <div class="watch-option-name">Fandango At Home — US</div>
+                <div class="watch-option-buttons">
+                    <button class="watch-button">RENT</button>
+                    <button class="watch-button">BUY</button>
+                </div>
+            </div>
+            
+            <div class="customize-list">
+                <span class="pro-badge">PRO</span> to customize this list
+            </div>
+            
+            <div style="margin-top: 10px; font-size: 12px;">
+                <a href="#">All services...</a>
+                <span style="color: var(--letterboxd-light-text); margin-left: 10px;">JustWatch</span>
+            </div>
+            
+            <div style="margin-top: 20px; color: var(--letterboxd-light-text); font-size: 12px;">
+                REVIEW 422 →
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

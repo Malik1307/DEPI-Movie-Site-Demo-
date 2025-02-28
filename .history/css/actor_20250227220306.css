@@ -1,0 +1,173 @@
+
+
+
+
+
+
+
+.actorProfile {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding-bottom: 40px;
+}
+
+.actorFilms {
+  /* width: 70%; */
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.actorFilms p {
+  font-family: Graphik-Light, sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  text-transform: uppercase;
+  color: #667788;
+}
+
+.actorFilms h2 {
+  font-family: Graphik-Semibold, sans-serif;
+  font-size: 25px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+
+
+
+.aboutActor {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+.aboutActor img {
+  width: 230px;
+  height: 340px;
+  border-radius: 5px;
+  border: 1px solid rgb(255, 255, 255, 0.3);
+  cursor: pointer;
+}
+
+.aboutActor img:hover {
+  border: 1px solid rgb(255, 255, 255 , 0.6);
+  transition: 0.3s;
+}
+
+.aboutActor h3 {
+  font-size: 15px;
+  margin-top: 20px;
+  color: #667788;
+}
+
+.aboutActor p {
+  font-size: 13px;
+  font-weight: 300;
+  margin-top: 10px;
+  color: #667788;
+}
+
+
+
+
+
+.socialLink:hover {
+  color: #fff;
+}
+
+/* Movie Card Styles */
+.movie-card-link {
+  text-decoration: none;
+  color: #fff;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.movie-card-link:hover {
+  transform: scale(1.03);
+  color: #fff;
+}
+
+.movie-card {
+  position: relative;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+  transition: transform 0.3s ease;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.7) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.movie-card-link:hover .overlay {
+  opacity: 1;
+}
+
+.rating {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #ffcc00;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+
+
+
+/* Adjust the films container to work with Bootstrap */
+
+
+/* Remove the existing img styles in films to avoid conflicts */
+
+
+/* Make sure the actor profile section is responsive */
+@media (max-width: 768px) {
+  .actorProfile {
+    flex-direction: column-reverse;
+  }
+  
+  .actorFilms, .aboutActor {
+    width: 100%;
+  }
+  
+  .aboutActor {
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .aboutActor img {
+    width: 150px;
+    height: auto;
+    margin-right: 20px;
+  }
+}

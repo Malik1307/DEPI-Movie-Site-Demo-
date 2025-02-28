@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/movie-details.css" />
+    <link rel="stylesheet" href="../css/responsive.css" />
+    <style></style>
+  </head>
+  <body class="container">
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // More button functionality
+        const moreBtn = document.querySelector(".more-btn");
+        const descriptionText = document.getElementById("description-text");
+        const fullText =
+          "Viktor Navorski is a man without a country; his plane took off just as a coup d'etat exploded in his homeland, leaving it in shambles, and now he's stranded at Kennedy Airport, where he's holding a passport that nobody recognizes. While quarantined in the transit lounge until authorities can figure out what to do with him, Viktor simply goes on living – and courts romance with a beautiful flight attendant.";
+        const shortText =
+          "In the fourth year of Jiayou in the Northern Song Dynasty, a shocking private salt case was exposed, uncovering a sinister plot involving Zhang Keiju, the Huainan Transport Commissioner, who colluded with the Liao people in treason. Kaifeng Prefecture's Zhan Zhao was ordered...";
+
+        let isExpanded = false;
+
+        moreBtn.addEventListener("click", function () {
+          if (isExpanded) {
+            descriptionText.textContent = shortText;
+            moreBtn.textContent = "More";
+          } else {
+            descriptionText.textContent = fullText;
+            moreBtn.textContent = "Less";
+          }
+          isExpanded = !isExpanded;
+        });
+
+        // Tab functionality
+        const tabs = document.querySelectorAll(".tab");
+        const tabContents = document.querySelectorAll(".tab-content");
+
+        tabs.forEach((tab) => {
+          tab.addEventListener("click", function () {
+            const tabId = this.getAttribute("data-tab");
+
+            // Update active tab
+            tabs.forEach((t) => t.classList.remove("active"));
+            this.classList.add("active");
+
+            // Update active content
+            tabContents.forEach((content) =>
+              content.classList.remove("active")
+            );
+            document.getElementById(tabId).classList.add("active");
+          });
+        });
+      });
+    </script>
+    <script  src="../js/movie-details.js"></script>
+    <script src="../shared/constants.js"></script>
+  </body>
+</html>

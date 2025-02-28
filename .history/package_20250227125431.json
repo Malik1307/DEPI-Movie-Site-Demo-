@@ -1,0 +1,7 @@
+{
+  "type": "module",
+  "name": "movies-app",
+  "version": "1.0.0",
+  "description": "Movies & Series App",
+  "dependencies": {}
+}

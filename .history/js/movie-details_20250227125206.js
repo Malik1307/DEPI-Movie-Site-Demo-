@@ -1,0 +1,1 @@
+import {API_KEY,BASE_URL,BACKDROP_PATH} from "../shared/constants"

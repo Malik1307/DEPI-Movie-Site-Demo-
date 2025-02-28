@@ -1,0 +1,31 @@
+.logo {
+  display: flex;
+  justify-content: center;
+}
+.logo .logo_icon {
+  margin-right: 10px;
+  width: 40px;
+  height: 40px;
+}
+.logo h1 {
+  margin: auto 0;
+}
+.carousel-item {
+  position: relative;
+  width: 100%;  /* Keeps full width */
+  height: 400px; /* Set desired height */
+  overflow: hidden;
+}
+
+.carousel-item::before {
+  content: "";
+  
+  width: 100%;
+  background-image: url('https://image.tmdb.org/t/p/w1280/ekstpH614fwDX8DUln1a2Opz0N8.jpg');
+  background-size: 60% auto; /* Keeps it covering */
+  background-position: center;
+  transform: scaleY(0.8); /* Zoom out vertically */
+  transition: transform 0.3s ease-in-out;
+}
+
+

@@ -1,0 +1,36 @@
+*{
+
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a{
+text-decoration: none;
+
+}
+:root {
+  --main-color: #13c6b0;
+}
+body {
+  background-color: black;
+}
+.navbar{
+position: sticky;
+top: 0;
+z-index: 99;
+
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+}
+.logo .logo_icon {
+  margin-right: 10px;
+  width: 40px;
+  height: 40px;
+}
+.logo h1 {
+  color: var(--main-color);
+  margin: auto 0;
+}

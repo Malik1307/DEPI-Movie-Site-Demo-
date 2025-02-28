@@ -1,0 +1,18 @@
+<!-- Add this style to your existing <style> section -->
+  /* Add this rule */
+  .container-fluid.px-4.mt-5 {
+    margin-top: 3rem !important; /* Increase space between description and tabs */
+  }
+  
+  /* Add this rule to make description section have proper z-index */
+  .movie-description {
+    position: relative;
+    z-index: 10;
+    margin-bottom: 2rem; /* Add more space after description */
+  }
+  
+  /* You might also want to ensure the expanded text has enough room */
+  .action-buttons {
+    margin-bottom: 2rem;
+  }
+</style>

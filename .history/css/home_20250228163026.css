@@ -1,0 +1,243 @@
+/* carousel  */
+:root {
+  --main-color: #13c6b0;
+}
+body {
+  background-color: black;
+}
+.logo {
+  display: flex;
+  justify-content: center;
+}
+.logo .logo_icon {
+  margin-right: 10px;
+  width: 40px;
+  height: 40px;
+}
+.logo h1 {
+  color: var(--main-color);
+  margin: auto 0;
+}
+.carousel {
+  position: relative;
+}
+
+.carousel-item {
+  position: relative;
+  /* margin-top: 50px; */
+  height: 600px;
+}
+
+.carousel-item img {
+  
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  filter: brightness(60%); /* Dark overlay effect */
+}
+
+.carousel-indicators{
+   position: absolute;
+   left: 1000px;
+  
+}
+
+.carousel-caption {
+  text-align: left;
+  left: 50px;
+  right: auto;
+  bottom: 28%;
+  width: 40%;
+  padding-left: 20px; /* Add some spacing */
+}
+.carousel-caption .info{
+  display: flex;
+  justify-content: space-between;
+  width: 27%;
+}
+
+.infocap{
+  border-right: 2px solid rgba(204, 204, 204, 0.5); /* 50% opacity */
+    padding-right: 8px;
+    height: 20px; /* Adjust height */
+    line-height: 20px; /* Align with text */
+    font-weight: bold;
+    margin: 0 4px;
+}
+
+.genres{
+  display: flex;
+  width: 50%;
+}
+
+.gcontent {
+  margin-right: 10px;
+  margin-top: 20px;
+  font-size: 15px;
+  font-weight: bold;
+  color: white; /* Change text color for visibility */
+  width: auto;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Custom Text Styling */
+.carousel-caption h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.carousel-caption p {
+  font-size: 1.2rem;
+  margin-top: 10px;
+  font-weight: bold;
+}
+.buttons{
+  display: flex;
+  margin-top: 15px;
+  justify-content: space-between;
+  width: 25%;
+}
+.playbutton{
+  
+  font-size: 50px;
+  background-color: white;
+  border-radius: 150%;
+   height: 47px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease; /* Transition properties */
+}
+ .playbutton:hover{
+  transform: scale(1.1); /* Scale the button on hover */
+  opacity: 0.9;
+ }
+ 
+ .watchlater{
+  
+  font-size: 50px;
+   height: 53px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease; /* Transition properties */
+ }
+ .watchlater:hover{
+  transform: scale(1.1); /* Scale the button on hover */
+  opacity: 0.9;
+ }
+/* Move previous button closer to the left edge */
+.carousel-control-prev {
+  left: 0 !important; /* Align to the left edge */
+}
+
+/* Move next button closer to the right edge */
+.carousel-control-next {
+  right: 0 !important; /* Align to the right edge */
+}
+
+/* Make sure icons are positioned correctly */
+.carousel-control-prev-icon, 
+.carousel-control-next-icon {
+  width: 40px !important; /* Adjust the button size */
+  height: 40px !important;
+  background-size: contain !important; /* Ensure the icon doesn't stretch */
+  background-repeat: no-repeat !important;
+  pointer-events: auto; /* Enable clicking only on the icon */
+
+}
+.carousel-control-prev, 
+.carousel-control-next {
+  width: auto !important; /* Remove unnecessary width */
+  height: auto !important; /* Remove unnecessary height */
+  pointer-events: none; /* Disable clicking on full area */
+}
+.infocap, .rate-icon , .playbutton{
+  
+}
+/* ---------------------- */
+.movie-container {
+}
+.movie-card {
+  width: 100%;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
+
+
+}
+
+.movie-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.top-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: var(--main-color);
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 5px;
+}
+
+.movie-title {
+  margin: 0 0 20px 0;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: gray;
+}
+.movie-card:hover + .movie-title {
+  color: white;
+  margin-top: 15px ;
+  margin-bottom: 5px;
+  transition: margin 0.3s ease-in-out;
+
+}
+
+
+.image-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.image-container img {
+  width: 100%;
+  display: block;
+  border-radius: 8px;
+}
+
+/* الظل المتدرج على الصورة */
+.image-container .overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40px; /* التحكم في ارتفاع الظل */
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  border-radius: 8px;
+}
+
+.rating {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  font-size: 12px;
+  font-weight: bold;
+  z-index: 2;
+  color: whitesmoke;
+}
+
+.rating i {
+  font-size: 8px;
+  color: whitesmoke;
+}

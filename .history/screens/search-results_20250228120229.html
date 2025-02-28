@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Search Results - CineMirage</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/search.css" />
+</head>
+
+<bod class="tex">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a href="index.html">
+        <div class="logo">
+          <img
+            src="../assets/images/movie-logo.png"
+            class="logo_icon"
+            alt=""
+          />
+          <h1 class="navbar-brand">CineMirage</h1>
+        </div>
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse me-auto ms-4" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="./browse-category.html?category=movie"
+              >Movies</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./browse-category.html?category=tv"
+              >TV Shows</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./browse-category.html?category=anime"
+              >Anime</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              id="sign-up"
+              href="./register.html"
+              >Sign Up</a
+            >
+          </li>  <li class="nav-item">
+            <a
+              class="nav-link"
+              id="log-out"
+              href="./index.html"
+              >Logout </a
+            >
+          </li>
+        </ul>
+        <form
+          id="search-form"
+          class="search-form"
+          action="search-results.html"
+          method="get"
+        >
+          <div class="search-box">
+            <input
+              type="text"
+              id="search-input"
+              name="query"
+              class="search-input"
+              placeholder="Search..."
+            />
+            <button type="submit" class="search-button">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- Search Results Container -->
+  <div class="container my-5">
+    <h1 class="mb-4" id="search-query-display">Search Results</h1>
+    
+    <!-- Loading Indicator -->
+    <div id="loading-indicator" class="text-center my-5" style="display: none;">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <p class="mt-2">Searching TMDB...</p>
+    </div>
+
+    <!-- Movies Section -->
+    <div id="movies-section" class="mb-5" style="display: none;">
+      <h2 class="mb-3">Movies</h2>
+      <div id="movies-results" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <!-- Results will be populated here -->
+      </div>
+    </div>
+
+    <!-- TV Shows Section -->
+    <div id="shows-section" class="mb-5" style="display: none;">
+      <h2 class="mb-3">TV Shows</h2>
+      <div id="shows-results" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <!-- Results will be populated here -->
+      </div>
+    </div>
+
+    <!-- People Section -->
+    <div id="people-section" class="mb-5" style="display: none;">
+      <h2 class="mb-3">People</h2>
+      <div id="people-results" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <!-- Results will be populated here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- TMDB API Search Integration -->
+  <script src="../js/search.js"></script>
+</body>
+</html>

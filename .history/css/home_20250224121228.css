@@ -1,0 +1,70 @@
+.logo {
+  display: flex;
+  justify-content: center;
+}
+.logo .logo_icon {
+  margin-right: 10px;
+  width: 40px;
+  height: 40px;
+}
+.logo h1 {
+  margin: auto 0;
+}
+.carousel-item {
+  position: relative;
+  width: 100%;  /* Keeps full width */
+  height: 400px; /* Set desired height */
+  overflow: hidden;
+}
+
+.carousel-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%; /* Extends the height */
+  background-image: url('https://image.tmdb.org/t/p/w1280/ekstpH614fwDX8DUln1a2Opz0N8.jpg');
+  background-size: 60%; /* Keeps it covering */
+  background-position: center;
+  transform: scaleY(0.8); /* Zoom out vertically */
+  transition: transform 0.3s ease-in-out;
+}
+
+.movie-card {
+  m
+  width: 300px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #222;
+  color: white;
+  position: relative;
+}
+.movie-card img {
+  max-width: 100%;
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+.card-body {
+  padding: 20px;
+}
+.rating {
+  color: gold;
+  font-weight: bold;
+}
+.genres span {
+  background: #444;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-right: 5px;
+  font-size: 14px;
+}
+.buttons i {
+  font-size: 24px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.buttons i:hover {
+  color: #00ff00;
+}

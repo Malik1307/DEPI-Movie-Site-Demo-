@@ -1,0 +1,668 @@
+{
+	"info": {
+		"_postman_id": "091f7a47-8604-4871-bd9b-07983a02ea75",
+		"name": "TMDB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37202586",
+		"_collection_link": "https://depi-team-1812.postman.co/workspace/Movie-Recommendation-System-(DE~8ec6fe66-3319-4342-a58f-477c60c02e03/collection/37202586-091f7a47-8604-4871-bd9b-07983a02ea75?action=share&source=collection_link&creator=37202586"
+	},
+	"item": [
+		{
+			"name": "Movies",
+			"item": [
+				{
+					"name": "Movie Info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/movie/{movie_id}?api_key={{key}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"movie",
+								"{movie_id}"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{key}}"
+								},
+								{
+									"key": "query",
+									"value": "small+patch",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cast",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/movie/{movie_id}/credits?api_key={{key}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"movie",
+								"{movie_id}",
+								"credits"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{key}}"
+								},
+								{
+									"key": "query",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Similar Movies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/movie/{movie_id}/recommendations?api_key={{key}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"movie",
+								"{movie_id}",
+								"recommendations"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{key}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reviews",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/movie/{movie_id}/reviews?api_key={{key}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"movie",
+								"{movie_id}",
+								"reviews"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{key}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Recent Movies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/movie/latest?api_key={{key}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"movie",
+								"latest"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{key}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Now Playing",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/movie/now_playing?api_key={{key}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"movie",
+								"now_playing"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{key}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Popular",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/movie/popular?api_key={{key}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"movie",
+								"popular"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{key}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Top Rated",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/movie/top_rated?api_key={{key}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"movie",
+								"top_rated"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{key}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upcoming",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/movie/upcoming?api_key={{key}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"movie",
+								"upcoming"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{key}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tv Shows",
+			"item": [
+				{
+					"name": "Show Info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/tv/{show_id}?api_key={{key}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"tv",
+								"{show_id}"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{key}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cast",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/tv/{show_id}/credits?api_key={{key}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"tv",
+								"{show_id}",
+								"credits"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{key}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Similar Shows",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/tv/{show_id}/recommendations?api_key={{key}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"tv",
+								"{show_id}",
+								"recommendations"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{key}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reviews",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/tv/{show_id}/reviews?api_key={{key}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"tv",
+								"{show_id}",
+								"reviews"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{key}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Recent Shows",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/tv/latest?api_key={{key}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"tv",
+								"latest"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{key}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Now Playing",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/tv/on_the_air?api_key={{key}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"tv",
+								"on_the_air"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{key}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Popular",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/tv/popular?api_key={{key}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"tv",
+								"popular"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{key}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Top Rated",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/tv/top_rated?api_key={{key}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"tv",
+								"top_rated"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{key}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Search",
+			"item": [
+				{
+					"name": "Search",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/search/multi?query={cast_member| movie | tv_show}&api_key={{key}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"search",
+								"multi"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "{cast_member| movie | tv_show}"
+								},
+								{
+									"key": "api_key",
+									"value": "{{key}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Movie",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/search/movie?query={movie_name}&api_key={{key}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"search",
+								"movie"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "{movie_name}"
+								},
+								{
+									"key": "api_key",
+									"value": "{{key}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tv Show",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/search/tv?query={show_name}&api_key={{key}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"search",
+								"tv"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "{show_name}"
+								},
+								{
+									"key": "api_key",
+									"value": "{{key}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cast Member",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/search/person?query={cast_memeber}&api_key={{key}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"search",
+								"person"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "{cast_memeber}"
+								},
+								{
+									"key": "api_key",
+									"value": "{{key}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Discover & Filter",
+			"item": [
+				{
+					"name": "Movies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/discover/movie?api_key={{key}}&[filter]",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"discover",
+								"movie"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{key}}"
+								},
+								{
+									"key": "[filter]",
+									"value": null
+								}
+							]
+						},
+						"description": "Non-Common Filters (Movies Only)\n\n- **primary_release_year** : Filter by primary release year (e.g., 2023).\n    \n- **primary_release_date.gte** : Filter by primary release date (greater than or equal to).\n    \n- **primary_release_date.lte** : Filter by primary release date (less than or equal to).\n    \n- **release_date.gte** : Filter by release date (greater than or equal to).\n    \n- **release_date.lte** : Filter by release date (less than or equal to).\n    \n- **with_companies** : Filter by production company IDs (comma-separated).\n    \n- **with_crew** : Filter by crew member IDs (comma-separated).\n    \n- **with_cast** : Filter by cast member IDs (comma-separated).\n    \n- **certification_country** : Filter by certification country (e.g., US).\n    \n- **certification** : Filter by certification (e.g., PG-13).\n    \n- **certification.lte** : Filter by maximum certification (e.g., PG-13).\n    \n- **certification.gte** : Filter by minimum certification (e.g., R)."
+					},
+					"response": []
+				},
+				{
+					"name": "Tv Show",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/discover/tv?api_key={{key}}&[filter]",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"discover",
+								"tv"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{key}}"
+								},
+								{
+									"key": "[filter]",
+									"value": null
+								}
+							]
+						},
+						"description": "Non-Common Filters (TV Shows Only)\n\n- **first_air_date_year** : Filter by first air date year (e.g., 2023).\n    \n- **first_air_date.gte** : Filter by first air date (greater than or equal to).\n    \n- **first_air_date.lte** : Filter by first air date (less than or equal to).\n    \n- **air_date.gte** : Filter by air date (greater than or equal to).\n    \n- **air_date.lte** : Filter by air date (less than or equal to).\n    \n- **with_networks** : Filter by network IDs (comma-separated).\n    \n- **timezone** : Filter by timezone (e.g., America/New_York)."
+					},
+					"response": []
+				}
+			],
+			"description": "### Common Filters (Movies and TV Shows)\n\n- **with_genres** : Filter by genre IDs (comma-separated).\n    \n- **with_keywords** : Filter by keyword IDs (comma-separated).\n    \n- **sort_by** : Sort results by criteria (e.g., popularity.desc, vote_average.desc).\n    \n- **page** : Specify the page number for paginated results.\n    \n- **language** : Filter by language (e.g., en-US).\n    \n- **vote_average.gte** : Filter by minimum vote average (e.g., 7.0).\n    \n- **vote_average.lte** : Filter by maximum vote average (e.g., 10.0).\n    \n- **vote_count.gte** : Filter by minimum vote count (e.g., 1000).\n    \n- **with_runtime.gte** : Filter by minimum runtime (in minutes).\n    \n- **with_runtime.lte** : Filter by maximum runtime (in minutes).\n    \n- **with_original_language** : Filter by original language (e.g., en).\n    \n- **with_watch_providers** : Filter by watch provider IDs (comma-separated).\n    \n- **watch_region** : Filter by watch region (e.g., US).\n    \n- **with_watch_monetization_types** : Filter by monetization type (e.g., flatrate, free, ads, rent, buy)."
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "https://api.themoviedb.org/3",
+			"type": "string"
+		},
+		{
+			"key": "key",
+			"value": "4464a9cd6c3e0ee26ee5e6a893515421",
+			"type": "string"
+		}
+	]
+}

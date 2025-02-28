@@ -1,0 +1,81 @@
+<!-- Collapsible Filtering Section -->
+<div class="container mt-3 mb-2">
+  <div class="card bg-dark text-white">
+    <div class="card-header d-flex justify-content-between align-items-center py-2">
+      <div class="d-flex align-items-center">
+        <h6 class="mb-0 me-2">Filters</h6>
+        <button
+          class="btn btn-sm btn-link text-white p-0"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#filterOptions"
+          aria-expanded="true"
+          aria-controls="filterOptions"
+          id="collapseBtn"
+        >
+          <i class="fas fa-chevron-up collapse-icon"></i>
+        </button>
+      </div>
+      <button class="btn btn-sm btn-outline-light" id="resetFilters">Reset</button>
+    </div>
+    <div class="collapse show" id="filterOptions">
+      <div class="card-body py-2">
+        <div class="row gx-2">
+          <!-- Genre Filter -->
+          <div class="col-md-4 mb-2">
+            <label for="genreSelect" class="form-label small mb-1">Genre</label>
+            <div class="custom-select-container" id="genreSelectContainer">
+              <div class="custom-select-display" id="genreDisplay">Select genres</div>
+              <div class="custom-select-options" id="genreOptions"></div>
+              <!-- Hidden input to store selected values -->
+              <input type="hidden" id="selectedGenres" name="selectedGenres" />
+            </div>
+          </div>
+
+          <!-- Sort By Filter -->
+          <div class="col-md-4 mb-2">
+            <label for="sortSelect" class="form-label small mb-1">Sort By</label>
+            <select class="form-select form-select-sm" id="sortSelect">
+              <option value="popularity.desc">Popularity (Desc)</option>
+              <option value="popularity.asc">Popularity (Asc)</option>
+              <option value="vote_average.desc">Rating (Desc)</option>
+              <option value="vote_average.asc">Rating (Asc)</option>
+              <option value="release_date.desc">Release Date (Desc)</option>
+              <option value="release_date.asc">Release Date (Asc)</option>
+              <option value="revenue.desc">Revenue (Desc)</option>
+            </select>
+          </div>
+
+          <!-- Year Filter -->
+          <div class="col-md-4 mb-2">
+            <label for="yearRange" class="form-label small mb-1">Release Year</label>
+            <div class="d-flex gap-2">
+              <input
+                type="number"
+                class="form-control form-control-sm"
+                id="yearFrom"
+                placeholder="From"
+                min="1900"
+                max="2024"
+              />
+              <input
+                type="number"
+                class="form-control form-control-sm"
+                id="yearTo"
+                placeholder="To"
+                min="1900"
+                max="2024"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-1">
+          <div class="col-12 d-flex justify-content-end">
+            <button class="btn btn-primary btn-sm" id="applyFilters">Apply Filters</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

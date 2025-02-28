@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Website</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/home.css" />
+  </head>
+  <body>
+    <nav class="custom-navbar d-flex align-items-center justify-content-between px-4 pe-5">
+      <!-- Left Section -->
+      <div class="d-flex align-items-center">
+          <a class="navbar-brand ms-4" href="#">iQIYI</a>
+          <div class="nav-links d-flex ms-4">
+              <a href="#" class="nav-link active">For You</a>
+              <a href="#" class="nav-link">Drama</a>
+              
+              <!-- More Dropdown -->
+              <div class="dropdown">
+                  <a href="#" class="nav-link dropdown-toggle">More <i ></i></a>
+                  <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#">Movie</a>
+                      <a class="dropdown-item" href="#">Anime</a>
+                      <a class="dropdown-item" href="#">Variety Show</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+  
+      <!-- Right Section -->
+      <div class="right-section d-flex align-items-center">
+          <div class="search-container">
+              <input type="text" class="search-box" placeholder="Love is Sweet">
+              <i class="fas fa-search search-icon"></i>
+          </div>
+          <a href="#" class="nav-link history"><i class="fas fa-clock"></i> History</a>
+          <a href="#" class="nav-link language"><i class="fas fa-globe"></i> Language</a>
+          <div class="profile-icon me-3">K</div>
+          <button class="btn btn-outline-light">APP</button>
+          <div class="vip-button">VIP</div>
+      </div>
+    </nav>
+  
+  </body>
+</html>

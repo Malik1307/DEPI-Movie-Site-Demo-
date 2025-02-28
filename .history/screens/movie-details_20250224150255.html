@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>‎The Monkey (2025) • Letterboxd</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --letterboxd-green: #00c030;
+            --letterboxd-dark: #14181c;
+            --letterboxd-darker: #0f1318;
+            --letterboxd-light-text: #99aabb;
+            --letterboxd-lighter-text: #bcd;
+            --letterboxd-orange: #ff8000;
+        }
+        
+        body {
+            background-color: var(--letterboxd-dark);
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .navbar {
+            background-color: var(--letterboxd-darker);
+            padding: 0.5rem 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .navbar-brand img {
+            height: 20px;
+        }
+        
+        .nav-link {
+            color: var(--letterboxd-light-text) !important;
+            font-size: 0.9rem;
+            padding: 0.5rem 0.7rem !important;
+        }
+        
+        .nav-link:hover {
+            color: #fff !important;
+        }
+        
+        .search-icon {
+            color: var(--letterboxd-light-text);
+            font-size: 1.2rem;
+        }
+        
+        .user-nav img {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+        }
+        
+        .hero-section {
+            position: relative;
+            height: 450px;
+            overflow: hidden;
+        }
+        
+        .hero-backdrop {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(20, 24, 28, 0.2), var(--letterboxd-dark)), 
+                        url('/api/placeholder/1200/450') center/cover no-repeat;
+            filter: blur(10px);
+            transform: scale(1.1);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            height: 100%;
+            padding: 2rem;
+        }
+        
+        .poster-container {
+            flex: 0 0 230px;
+            margin-right: 2rem;
+        }
+        
+        .poster {
+            width: 230px;
+            height: 345px;
+            border-radius: 4px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            background-color: #2c3440;
+        }
+        
+        .film-details {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+        
+        .film-title h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .film-year {
+            color: var(--letterboxd-light-text);
+            font-size: 1.1rem;
+        }
+        
+        .film-metadata {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+            color: var(--letterboxd-light-text);
+            font-size: 0.9rem;
+        }
+        
+        .film-metadata span {
+            margin-right: 0.7rem;
+        }
+        
+        .separator {
+            margin: 0 0.3rem;
+        }
+        
+        .action-buttons {
+            display: flex;
+            margin: 1rem 0;
+        }
+        
+        .btn-letterboxd {
+            background-color: rgba(255, 255, 255, 0.08);
+            border: none;
+            color: #fff;
+            padding: 0.5rem 0.8rem;
+            border-radius: 3px;
+            margin-right: 0.5rem;
+            font-size: 0.9rem;
+            transition: background-color 0.2s;
+        }
+        
+        .btn-letterboxd:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+        
+        .btn-letterboxd.btn-like {
+            color: var(--letterboxd-green);
+        }
+        
+        .film-description {
+            max-width: 700px;
+            margin-top: 1rem;
+            color: var(--letterboxd-lighter-text);
+            line-height: 1.5;
+        }
+        
+        .content-section {
+            background-color: #1d232a;
+            padding: 2rem 0;
+        }
+        
+        .content-container {
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .section-title {
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .section-title a {
+            color: var(--letterboxd-light-text);
+            font-size: 0.9rem;
+            text-decoration: none;
+        }
+        
+        .rating-stats {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .rating-value {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-right: 0.7rem;
+        }
+        
+        .rating-stars {
+            color: var(--letterboxd-green);
+            font-size: 1rem;
+            margin-right: 0.7rem;
+        }
+        
+        .rating-count {
+            color: var(--letterboxd-light-text);
+            font-size: 0.9rem;
+        }
+        
+        .rating-distribution {
+            display: flex;
+            height: 6px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .rating-bar {
+            height: 100%;
+            background-color: var(--letterboxd-green);
+            margin-right: 1px;
+        }
+        
+        .cast-crew-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .cast-member, .crew-member {
+            text-align: center;
+        }
+        
+        .profile-photo {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: #2c3440;
+            margin: 0 auto 0.5rem;
+        }
+        
+        .member-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.2rem;
+        }
+        
+        .member-role {
+            color: var(--letterboxd-light-text);
+            font-size: 0.8rem;
+        }
+        
+        .reviews-container .review {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1.5rem 0;
+        }
+        
+        .review-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .reviewer-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 1rem;
+            background-color: #2c3440;
+        }
+        
+        .reviewer-info {
+            flex: 1;
+        }
+        
+        .reviewer-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.2rem;
+        }
+        
+        .review-date {
+            color: var(--letterboxd-light-text);
+            font-size: 0.8rem;
+        }
+        
+        .review-rating {
+            color: var(--letterboxd-green);
+            font-size: 0.9rem;
+        }
+        
+        .review-content {
+            color: var(--letterboxd-lighter-text);
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+        
+        .review-likes {
+            color: var(--letterboxd-light-text);
+            font-size: 0.8rem;
+        }
+        
+        .footer {
+            background-color: var(--letterboxd-darker);
+            padding: 2rem 0;
+            color: var(--letterboxd-light-text);
+            font-size: 0.9rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links a {
+            color: var(--letterboxd-light-text);
+            text-decoration: none;
+            margin: 0 0.7rem;
+        }
+        
+        .footer-links a:hover {
+            color: #fff;
+        }
+        
+        .footer-copyright {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="/api/placeholder/120/30" alt="Letterboxd">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">SIGN IN</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">CREATE ACCOUNT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">FILMS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">LISTS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">MEMBERS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">JOURNAL</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <a href="#" class="search-icon me-3">
+                        <i class="fas fa-search"></i>
+                    </a>
+                    <div class="user-nav">
+                        <a href="#">
+                            <img src="/api/placeholder/28/28" alt="User">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="hero-backdrop"></div>
+        <div class="container hero-content">
+            <div class="poster-container">
+                <div class="poster">
+                    <img src="/api/placeholder/230/345" alt="The Monkey" width="230" height="345">
+                </div>
+            </div>
+            <div class="film-details">
+                <div class="film-title">
+                    <h1>The Monkey</h1>
+                    <div class="film-year">2025</div>
+                </div>
+                <div class="film-metadata">
+                    <span>Directed by Osgood Perkins</span>
+                    <span class="separator">•</span>
+                    <span>Horror</span>
+                    <span class="separator">•</span>
+                    <span>USA</span>
+                </div>
+                <div class="action-buttons">
+                    <button class="btn-letterboxd">
+                        <i class="fas fa-eye"></i> Watched
+                    </button>
+                    <button class="btn-letterboxd btn-like">
+                        <i class="fas fa-heart"></i> Like
+                    </button>
+                    <button class="btn-letterboxd">
+                        <i class="fas fa-clock"></i> Watchlist
+                    </button>
+                    <button class="btn-letterboxd">
+                        <i class="fas fa-list"></i> List
+                    </button>
+                    <button class="btn-letterboxd">
+                        <i class="fas fa-share-alt"></i>
+                    </button>
+                </div>
+                <div class="film-description">
+                    <p>Based on Stephen King's short story, "The Monkey" follows twin brothers who discover their family's toy monkey is connected to a series of gruesome deaths. When the dormant toy reenters their lives decades later, the brothers must overcome their estranged relationship to defeat the monkey's horrifying curse once and for all.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content Section -->
+    <div class="content-section">
+        <div class="content-container">
+            <!-- Ratings -->
+            <div class="section-title">
+                <span>Ratings & Reviews</span>
+                <a href="#">VIEW ALL</a>
+            </div>
+            <div class="rating-stats">
+                <div class="rating-value">3.5</div>
+                <div class="rating-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <div class="rating-count">12,345 ratings</div>
+            </div>
+            <div class="rating-distribution">
+                <div class="rating-bar" style="flex: 0.05; background-color: #ff0000;"></div>
+                <div class="rating-bar" style="flex: 0.1; background-color: #ff8000;"></div>
+                <div class="rating-bar" style="flex: 0.15; background-color: #ffbf00;"></div>
+                <div class="rating-bar" style="flex: 0.35; background-color: #ffff00;"></div>
+                <div class="rating-bar" style="flex: 0.35; background-color: #00c030;"></div>
+            </div>
+
+            <!-- Cast -->
+            <div class="section-title mt-4">
+                <span>Cast</span>
+                <a href="#">VIEW ALL</a>
+            </div>
+            <div class="cast-crew-grid">
+                <div class="cast-member">
+                    <div class="profile-photo">
+                        <img src="/api/placeholder/70/70" alt="Theo James" width="70" height="70">
+                    </div>
+                    <div class="member-name">Theo James</div>
+                    <div class="member-role">Bill Shelburn</div>
+                </div>
+                <div class="cast-member">
+                    <div class="profile-photo">
+                        <img src="/api/placeholder/70/70" alt="Elijah Wood" width="70" height="70">
+                    </div>
+                    <div class="member-name">Elijah Wood</div>
+                    <div class="member-role">Dennis Shelburn</div>
+                </div>
+                <div class="cast-member">
+                    <div class="profile-photo">
+                        <img src="/api/placeholder/70/70" alt="Tatiana Maslany" width="70" height="70">
+                    </div>
+                    <div class="member-name">Tatiana Maslany</div>
+                    <div class="member-role">Ginger</div>
+                </div>
+                <div class="cast-member">
+                    <div class="profile-photo">
+                        <img src="/api/placeholder/70/70" alt="Christian Convery" width="70" height="70">
+                    </div>
+                    <div class="member-name">Christian Convery</div>
+                    <div class="member-role">Young Bill</div>
+                </div>
+            </div>
+
+            <!-- Crew -->
+            <div class="section-title">
+                <span>Crew</span>
+                <a href="#">VIEW ALL</a>
+            </div>
+            <div class="cast-crew-grid">
+                <div class="crew-member">
+                    <div class="profile-photo">
+                        <img src="/api/placeholder/70/70" alt="Osgood Perkins" width="70" height="70">
+                    </div>
+                    <div class="member-name">Osgood Perkins</div>
+                    <div class="member-role">Director</div>
+                </div>
+                <div class="crew-member">
+                    <div class="profile-photo">
+                        <img src="/api/placeholder/70/70" alt="Stephen King" width="70" height="70">
+                    </div>
+                    <div class="member-name">Stephen King</div>
+                    <div class="member-role">Original Story</div>
+                </div>
+                <div class="crew-member">
+                    <div class="profile-photo">
+                        <img src="/api/placeholder/70/70" alt="Oz Perkins" width="70" height="70">
+                    </div>
+                    <div class="member-name">Oz Perkins</div>
+                    <div class="member-role">Screenplay</div>
+                </div>
+                <div class="crew-member">
+                    <div class="profile-photo">
+                        <img src="/api/placeholder/70/70" alt="Roy Lee" width="70" height="70">
+                    </div>
+                    <div class="member-name">Roy Lee</div>
+                    <div class="member-role">Producer</div>
+                </div>
+            </div>
+
+            <!-- Reviews -->
+            <div class="section-title">
+                <span>Recent Reviews</span>
+                <a href="#">VIEW ALL</a>
+            </div>
+            <div class="reviews-container">
+                <div class="review">
+                    <div class="review-header">
+                        <div class="reviewer-avatar">
+                            <img src="/api/placeholder/40/40" alt="Reviewer" width="40" height="40">
+                        </div>
+                        <div class="reviewer-info">
+                            <div class="reviewer-name">Michael S</div>
+                            <div class="review-date">February 18, 2025</div>
+                        </div>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="review-content">
+                        <p>Perkins delivers another atmospheric slow-burn that masterfully builds dread through a minimalist approach. The cursed toy monkey becomes a genuinely unnerving presence through clever camera work and sound design rather than cheap jump scares. Wood and James have excellent chemistry as estranged brothers forced to confront both supernatural horror and family trauma.</p>
+                    </div>
+                    <div class="review-likes">
+                        <i class="far fa-heart"></i> 243 likes
+                    </div>
+                </div>
+                <div class="review">
+                    <div class="review-header">
+                        <div class="reviewer-avatar">
+                            <img src="/api/placeholder/40/40" alt="Reviewer" width="40" height="40">
+                        </div>
+                        <div class="reviewer-info">
+                            <div class="reviewer-name">Sarah K</div>
+                            <div class="review-date">February 15, 2025</div>
+                        </div>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="review-content">
+                        <p>While the concept is undeniably creepy (that monkey!), the film struggles with pacing in its middle section. Strong performances from the cast, particularly Tatiana Maslany in a supporting role, help elevate material that occasionally feels stretched thin from its short story origins. The final act, however, delivers some genuinely unsettling imagery that will stick with you.</p>
+                    </div>
+                    <div class="review-likes">
+                        <i class="far fa-heart"></i> 176 likes
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">About</a>
+                <a href="#">News</a>
+                <a href="#">Pro</a>
+                <a href="#">Apps</a>
+                <a href="#">Year in Review</a>
+                <a href="#">Gift Guide</a>
+                <a href="#">Podcast</a>
+                <a href="#">Help</a>
+                <a href="#">Terms</a>
+                <a href="#">API</a>
+                <a href="#">Contact</a>
+            </div>
+            <div class="footer-copyright">
+                © Letterboxd Limited. Made by fans in Aotearoa New Zealand. Film data from TMDb.
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
